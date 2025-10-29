@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #
 # Llama benchmark with MLC. This script should be invoked from the host and will run 
-# the MLC container with the commands to download, quantize, and benchmark the models.
+# the MLC container with the commands to benchmark locally available models.
 # It will add its collected performance data to jetson-containers/data/benchmarks/mlc.csv 
 #
-# Set the HUGGINGFACE_TOKEN environment variable to your HuggingFace account token 
-# that has been granted access to the Meta-Llama models.  You can run it like this:
+# Models should be available locally at /data/models/mlc/${MLC_VERSION}/${model_name}-${QUANTIZATION}-MLC
+# You can run it like this:
 #
-#    HUGGINGFACE_TOKEN=hf_abc123 ./benchmark.sh meta-llama/Llama-2-7b-hf
+#    ./benchmark.sh meta-llama/Llama-2-7b-hf
 #
 # If a model is not specified, then the default set of models will be benchmarked.
 # See the environment variables below and their defaults for model settings to change.
@@ -19,7 +19,6 @@
 #
 set -ex
 
-: "${HUGGINGFACE_TOKEN:=SET_YOUR_HUGGINGFACE_TOKEN}"
 : "${MLC_VERSION:=0.1.4}"
 
 : "${QUANTIZATION:=q4f16_ft}"
@@ -40,28 +39,15 @@ function benchmark()
     local model_name=$(basename $model_repo)
     local model_root="/data/models/mlc/${MLC_VERSION}"
     
-    local download_flags="--ignore-patterns='*.pth,*.bin'"
-
-    if [ $USE_SAFETENSORS != "yes" ]; then
-      download_flags="--skip-safetensors"
-    fi
+    # Use local model path instead of downloading from HuggingFace
+    local local_model_path="${model_root}/${model_name}-${QUANTIZATION}-MLC"
     
     if [ ${MLC_VERSION:4} -ge 4 ]; then
-      if [ -n "$HF_USER" ]; then
-        hf_user="$HF_USER"
-      else
-        if [ $QUANTIZATION = "q4f16_ft" ]; then
-          hf_user="dusty-nv"
-        else
-          hf_user="mlc-ai"
-        fi
-      fi
-      
       mkdir -p $(jetson-containers data)/models/mlc/cache || true ;
       
       run_cmd="\
         python3 benchmark.py \
-          --model HF://${hf_user}/${model_name}-${QUANTIZATION}-MLC \
+          --model ${local_model_path} \
           --max-new-tokens 128 \
           --max-num-prompts 4 \
           --prompt $PROMPT \
@@ -77,15 +63,12 @@ function benchmark()
       
       run_cmd="$run_cmd ; rm -rf /data/models/mlc/cache/* || true ; "
     else
+      # For older MLC versions, use local model directory directly
       run_cmd="\
-        if [ ! -d \${MODEL_REPO} ]; then \
-            MODEL_REPO=\$(huggingface-downloader ${download_flags} \${MODEL_REPO}) ; \
-        fi ; \
-        bash test.sh $model_name \${MODEL_REPO} "
+        bash test.sh $model_name ${local_model_path} "
     fi
     
     jetson-containers run \
-        -e HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN} \
         -e QUANTIZATION=${QUANTIZATION} \
         -e SKIP_QUANTIZATION=${SKIP_QUANTIZATION} \
         -e USE_SAFETENSORS=${USE_SAFETENSORS} \
