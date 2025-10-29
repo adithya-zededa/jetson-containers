@@ -1,6 +1,388 @@
-# LLM Benchmark Suite
+# LLM Benchmark Suite for Jetson
 
-Comprehensive benchmarking tool for comparing NanoLLM and Ollama performance on Jetson hardware.
+Complete benchmarking system for comparing Ollama and NanoLLM performance with AI-powered quality evaluation.
+
+## 🚀 Quick Start
+
+### Option 1: Run Everything (Recommended)
+```bash
+cd /home/nvidia/Developer/vision-language-model-testbench/jetson-containers/test-bench
+source ~/.config/benchmark/gemini_key.sh  # Load API key
+./run_all_benchmarks.sh
+```
+
+This will:
+- Benchmark 3 models on Ollama
+- Benchmark 3 models on NanoLLM  
+- Evaluate all responses with Gemini AI
+- Generate comprehensive comparison report
+
+### Option 2: Skip NanoLLM (Faster - 5 minutes)
+```bash
+SKIP_NANOLLM=yes ./run_all_benchmarks.sh
+```
+
+### Option 3: Individual Components
+```bash
+# Just Ollama
+python3 quick_benchmark.py
+
+# Just NanoLLM
+python3 benchmark_nanollm.py
+
+# Just evaluation
+python3 evaluate_with_gemini.py
+```
+
+---
+
+## 📋 Prerequisites
+
+### Required
+
+1. **Gemini API Key** (for quality evaluation)
+```bash
+# Set up once
+export GEMINI_API_KEY='your-api-key-here'
+mkdir -p ~/.config/benchmark
+echo "export GEMINI_API_KEY='your-api-key-here'" > ~/.config/benchmark/gemini_key.sh
+chmod 600 ~/.config/benchmark/gemini_key.sh
+
+# Load for each session
+source ~/.config/benchmark/gemini_key.sh
+```
+
+2. **Ollama Running** (for Ollama benchmarks)
+```bash
+sudo systemctl start ollama
+curl http://localhost:11434/api/tags  # Verify
+```
+
+3. **jetson-containers** (for NanoLLM benchmarks)
+```bash
+which jetson-containers  # Should return path
+```
+
+### Optional
+- Google Generative AI Python package (auto-installed)
+- HuggingFace token (for NanoLLM gated models)
+
+---
+
+## 🎯 Available Scripts
+
+### Master Script
+**`run_all_benchmarks.sh`** - Complete benchmark pipeline
+- Runs Ollama and NanoLLM benchmarks
+- Evaluates with Gemini
+- Generates summary report
+
+Environment variables:
+- `SKIP_OLLAMA=yes` - Skip Ollama benchmarks
+- `SKIP_NANOLLM=yes` - Skip NanoLLM benchmarks  
+- `SKIP_EVALUATION=yes` - Skip quality evaluation
+
+### Benchmark Scripts
+
+**`quick_benchmark.py`** - Fast Ollama benchmark
+- Tests available Ollama models
+- 3 prompts: reasoning, code, summarization
+- Output: `quick_benchmark_YYYYMMDD_HHMMSS.json`
+
+**`benchmark_nanollm.py`** - NanoLLM benchmark via container
+- Uses `nano_llm.chat` API with MLC backend
+- Same 3 prompts for fair comparison
+- Output: `nanollm_benchmark_YYYYMMDD_HHMMSS.json`
+
+**`benchmark_llm.py`** - Full comprehensive benchmark
+- Detailed metrics: GPU, CPU, memory usage
+- Multiple prompts and models
+- Generates visualizations and CSV
+- Output: Multiple files + `plots/` directory
+
+### Evaluation Scripts
+
+**`evaluate_with_gemini.py`** - AI-powered quality scoring
+- Uses Gemini 2.5 Flash as judge
+- Evaluates on 5 criteria (correctness, relevance, completeness, coherence, reasoning)
+- Handles both Ollama and NanoLLM results
+- Output: `gemini_evaluations_combined_YYYYMMDD_HHMMSS.json`
+
+### Utility Scripts
+
+**`check_benchmark_setup.py`** - System verification
+- Checks Python version and dependencies
+- Verifies Ollama/NanoLLM availability
+- Confirms tegrastats for GPU monitoring
+
+---
+
+## 📊 Output Files
+
+### Performance Data
+- `quick_benchmark_*.json` - Ollama performance results
+- `nanollm_benchmark_*.json` - NanoLLM performance results
+- `benchmark_results.json` - Full benchmark raw data
+- `results_summary.csv` - Aggregated statistics
+
+### Quality Scores
+- `gemini_evaluations_*.json` - Individual evaluation results
+- `gemini_evaluations_combined_*.json` - Combined Ollama + NanoLLM scores
+- `quality_scores.json` - Full benchmark quality data
+
+### Visualizations (from full benchmark)
+- `plots/performance_comparison.png` - Throughput comparison
+- `plots/first_token_latency.png` - Latency analysis
+- `plots/quality_radar.png` - Quality breakdown by criteria
+- `plots/average_quality.png` - Overall quality scores
+
+---
+
+## 🔧 Configuration
+
+### Models Tested
+
+**Ollama** (edit in `quick_benchmark.py`):
+```python
+MODELS = [
+    "llama3.2:3b",
+    "llama3.1:8b",
+    "gemma3:4b",
+]
+```
+
+**NanoLLM** (edit in `benchmark_nanollm.py`):
+```python
+MODELS = [
+    "meta-llama/Llama-3.2-1B-Instruct",
+    "meta-llama/Llama-3.2-3B-Instruct",
+    "meta-llama/Llama-3.1-8B-Instruct",
+]
+```
+
+### Test Prompts
+
+Edit `PROMPTS` list in any benchmark script:
+```python
+PROMPTS = [
+    {
+        "id": "reasoning",
+        "text": "Explain recursion in programming with a simple example.",
+        "category": "reasoning"
+    },
+    {
+        "id": "code",
+        "text": "Write a Python function to check if a string is a palindrome.",
+        "category": "code"
+    },
+    {
+        "id": "summary",
+        "text": "Summarize the key principles of object-oriented programming in 2-3 sentences.",
+        "category": "summarization"
+    },
+]
+```
+
+### NanoLLM Settings
+
+In `benchmark_nanollm.py`:
+```python
+CONTAINER = "dustynv/nano_llm:r36.4.0"
+QUANTIZATION = "q4f16_ft"  # Options: q4f16_ft, q8f16_ft, q2_K, etc.
+MAX_TOKENS = 500  # Max output tokens
+```
+
+---
+
+## 📈 Expected Results
+
+### Performance Metrics
+```
+[OLLAMA] llama3.2:3b
+  Throughput: 18.9 tokens/s
+  Avg Time:   14.3s
+
+[NANOLLM] Llama-3.2-3B-Instruct
+  Throughput: XX.X tokens/s
+  Avg Time:   XX.Xs
+```
+
+### Quality Scores (Gemini Judge)
+```
+[OLLAMA] llama3.2:3b
+  Average Quality: 9.33/10
+  - Correctness:  9.7/10
+  - Relevance:    8.3/10
+  - Completeness: 9.3/10
+  - Coherence:    10.0/10
+  - Reasoning:    9.3/10
+```
+
+---
+
+## ⏱️ Timing Estimates
+
+| Task | Duration | Notes |
+|------|----------|-------|
+| Ollama (3 models × 3 prompts) | 2-5 min | Fast with local inference |
+| NanoLLM (3 models × 3 prompts) | 15-30 min | MLC compilation overhead |
+| Gemini Evaluation | 1-2 min | Cloud API (fast) |
+| **Total (all)** | **20-40 min** | First run |
+| **Ollama only** | **5-10 min** | Quick comparison |
+
+---
+
+## 🐛 Troubleshooting
+
+### Ollama Issues
+```bash
+# Start Ollama
+sudo systemctl start ollama
+
+# Check status
+curl http://localhost:11434/api/tags
+
+# List available models
+ollama list
+```
+
+### NanoLLM Issues
+```bash
+# Check container is available
+docker images | grep nano_llm
+
+# Verify jetson-containers
+which jetson-containers
+
+# Skip NanoLLM if models need compilation
+SKIP_NANOLLM=yes ./run_all_benchmarks.sh
+```
+
+### Gemini API Issues
+```bash
+# Verify API key is set
+echo $GEMINI_API_KEY
+
+# Reload from config
+source ~/.config/benchmark/gemini_key.sh
+
+# Test API
+python3 -c "import google.generativeai as genai; genai.configure(api_key='$GEMINI_API_KEY'); print('✓ OK')"
+```
+
+### Permission Errors
+```bash
+# Make scripts executable
+chmod +x *.sh *.py
+
+# Check current directory
+pwd  # Should be: .../jetson-containers/test-bench
+```
+
+---
+
+## 📁 Directory Structure
+
+```
+test-bench/
+├── run_all_benchmarks.sh          ⭐ Master script
+├── quick_benchmark.py             📊 Ollama benchmark
+├── benchmark_nanollm.py           📊 NanoLLM benchmark  
+├── benchmark_llm.py               📊 Full benchmark suite
+├── evaluate_with_gemini.py        🤖 Gemini evaluation
+├── check_benchmark_setup.py       🔧 System check
+│
+├── quick_benchmark_*.json         📄 Ollama results
+├── nanollm_benchmark_*.json       📄 NanoLLM results
+├── gemini_evaluations_*.json      📄 Quality scores
+│
+└── plots/                         📈 Visualizations (if generated)
+```
+
+---
+
+## 🎓 Usage Examples
+
+### Basic Workflow
+```bash
+cd /home/nvidia/Developer/vision-language-model-testbench/jetson-containers/test-bench
+
+# 1. Verify system
+python3 check_benchmark_setup.py
+
+# 2. Load API key
+source ~/.config/benchmark/gemini_key.sh
+
+# 3. Run benchmarks
+./run_all_benchmarks.sh
+
+# 4. Review results (printed to console)
+```
+
+### Quick Test (Ollama Only)
+```bash
+SKIP_NANOLLM=yes ./run_all_benchmarks.sh
+```
+
+### Custom Model Test
+```bash
+# Edit quick_benchmark.py to test specific models
+# Then run:
+python3 quick_benchmark.py
+python3 evaluate_with_gemini.py
+```
+
+### Background Execution
+```bash
+nohup ./run_all_benchmarks.sh > benchmark_full.log 2>&1 &
+
+# Monitor progress
+tail -f benchmark_full.log
+
+# Check if still running
+ps aux | grep benchmark
+```
+
+---
+
+## 📞 Support
+
+### Check Logs
+```bash
+# View recent benchmark output
+cat quick_benchmark_*.json | jq '.[0]'
+
+# Check evaluation results
+cat gemini_evaluations_*.json | jq '.[0]'
+```
+
+### Verify Installation
+```bash
+python3 check_benchmark_setup.py
+```
+
+### Clean Old Results
+```bash
+# Remove old benchmark files (optional)
+rm quick_benchmark_*.json
+rm nanollm_benchmark_*.json
+rm gemini_evaluations_*.json
+```
+
+---
+
+## 🔑 Key Features
+
+✅ **Dual Backend Comparison** - Compare Ollama vs NanoLLM side-by-side  
+✅ **AI-Powered Evaluation** - Gemini 2.5 Flash judges response quality  
+✅ **Comprehensive Metrics** - Throughput, latency, GPU/CPU usage  
+✅ **Easy to Use** - Single command for complete benchmark  
+✅ **Flexible** - Skip components, test custom models/prompts  
+✅ **Production Ready** - Handles errors, provides detailed logs  
+
+---
+
+**Ready to benchmark?** Run: `./run_all_benchmarks.sh`
 
 ## Features
 
