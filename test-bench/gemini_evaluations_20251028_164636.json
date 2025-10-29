@@ -1,0 +1,110 @@
+[
+  {
+    "model": "llama3.2:3b",
+    "prompt_id": "reasoning",
+    "timestamp": "2025-10-28T16:41:23.131752",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 7,
+    "completeness": 9,
+    "coherence": 10,
+    "reasoning_quality": 10,
+    "average": 9.2
+  },
+  {
+    "model": "llama3.2:3b",
+    "prompt_id": "code",
+    "timestamp": "2025-10-28T16:41:28.408958",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 9,
+    "completeness": 10,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 9.6
+  },
+  {
+    "model": "llama3.2:3b",
+    "prompt_id": "summary",
+    "timestamp": "2025-10-28T16:41:33.254262",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 8,
+    "completeness": 9,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 9.2
+  },
+  {
+    "model": "llama3.1:8b",
+    "prompt_id": "reasoning",
+    "timestamp": "2025-10-28T16:43:17.755364",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 6,
+    "completeness": 3,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 7.6
+  },
+  {
+    "model": "llama3.1:8b",
+    "prompt_id": "code",
+    "timestamp": "2025-10-28T16:44:12.517195",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 10,
+    "completeness": 10,
+    "coherence": 10,
+    "reasoning_quality": 10,
+    "average": 10.0
+  },
+  {
+    "model": "llama3.1:8b",
+    "prompt_id": "summary",
+    "timestamp": "2025-10-28T16:44:40.849285",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 9,
+    "completeness": 9,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 9.4
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "prompt_id": "reasoning",
+    "timestamp": "2025-10-28T16:45:48.489457",
+    "judge": "gemini-2.5-flash",
+    "correctness": 10,
+    "relevance": 8,
+    "completeness": 10,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 9.4
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "prompt_id": "code",
+    "timestamp": "2025-10-28T16:46:23.911894",
+    "judge": "gemini-2.5-flash",
+    "correctness": 8,
+    "relevance": 10,
+    "completeness": 7,
+    "coherence": 10,
+    "reasoning_quality": 8,
+    "average": 8.6
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "prompt_id": "summary",
+    "timestamp": "2025-10-28T16:46:36.872010",
+    "judge": "gemini-2.5-flash",
+    "correctness": 9,
+    "relevance": 2,
+    "completeness": 8,
+    "coherence": 10,
+    "reasoning_quality": 9,
+    "average": 7.6
+  }
+]

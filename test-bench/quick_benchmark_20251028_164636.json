@@ -1,0 +1,101 @@
+[
+  {
+    "model": "llama3.2:3b",
+    "total_time": 32.671942949295044,
+    "first_token_time": 5.857391595840454,
+    "tokens_generated": 555,
+    "throughput": 16.987052189131443,
+    "response": "Recursion is a fundamental concept in programming that allows a function to call itself repeatedly until it reaches a base case that stops the recursion.\n\n**What is Recursion?**\n\nRecursion occurs when a function calls itself during its execution, and this process continues until a specific condition is met, which is known as the \"base case.\" The base case serves as a stopping point for the recursion, preventing the function from calling itself indefinitely.\n\n**Example: Factorial Function using Recursion**\n\nThe factorial of a number `n` (denoted by `n!`) is the product of all positive integers less than or equal to `n`. For example, `5! = 5 \u00d7 4 \u00d7 3 \u00d7 2 \u00d7 1 = 120`.\n\nHere's an example of how you can calculate the factorial using recursion in Python:\n```\ndef factorial(n):\n    if n == 0:  # base case\n        return 1\n    else:\n        return n * factorial(n-1)  # recursive call\n\nprint(factorial(5))  # Output: 120\n```\nIn this example:\n\n*   The `factorial` function takes an integer `n` as input.\n*   If `n` is equal to 0, the function returns 1 (the base case).\n*   Otherwise, the function calls itself with the argument `n-1`, and multiplies the result by `n`.\n\nThe recursion process continues until `n` reaches 0, at which point the base case is reached, and the recursion stops. The final result is then returned.\n\n**How Recursion Works**\n\nHere's a step-by-step breakdown of how recursion works in the factorial example:\n\n1.  `factorial(5)` is called.\n2.  Since `n` (5) is not equal to 0, the function calls itself with `n-1` (4).\n3.  `factorial(4)` is called.\n4.  Again, since `n` (4) is not equal to 0, the function calls itself with `n-1` (3).\n5.  This process continues until `n` reaches 0.\n6.  When `n` is 0, the base case is reached, and the recursion stops.\n7.  The final result is returned from the recursive call (`factorial(3)`), which in turn returns the result to the previous recursive call (`factorial(4)`).\n8.  This process continues until the initial recursive call (`factorial(5)`) completes.\n\nBy using recursion, we can elegantly solve problems that have a recursive structure, such as calculating factorials or traversing tree-like data structures.",
+    "prompt_id": "reasoning",
+    "prompt_category": "reasoning",
+    "timestamp": "2025-10-28T16:41:23.131752"
+  },
+  {
+    "model": "llama3.2:3b",
+    "total_time": 5.277041435241699,
+    "first_token_time": 0.5276186466217041,
+    "tokens_generated": 105,
+    "throughput": 19.897512894020092,
+    "response": "def is_palindrome(s):\n    \"\"\"\n    Checks if a given string is a palindrome.\n\n    Args:\n        s (str): The input string to be checked.\n\n    Returns:\n        bool: True if the string is a palindrome, False otherwise.\n    \"\"\"\n    # Remove any non-alphanumeric characters and convert to lowercase\n    cleaned_s = ''.join(c for c in s if c.isalnum()).lower()\n    \n    # Compare the cleaned string with its reverse\n    return cleaned_s == cleaned_s[::-1]",
+    "prompt_id": "code",
+    "prompt_category": "code",
+    "timestamp": "2025-10-28T16:41:28.408958"
+  },
+  {
+    "model": "llama3.2:3b",
+    "total_time": 4.845140218734741,
+    "first_token_time": 0.5121738910675049,
+    "tokens_generated": 96,
+    "throughput": 19.813668060378532,
+    "response": "Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of objects and classes, where data and behavior are combined into a single unit. The key principles of OOP include encapsulation, inheritance, polymorphism, and abstraction, which allow for modularity, reusability, and flexibility in software development. These principles enable developers to create complex systems by breaking them down into smaller, independent objects that can interact with each other in meaningful ways.",
+    "prompt_id": "summary",
+    "prompt_category": "summarization",
+    "timestamp": "2025-10-28T16:41:33.254262"
+  },
+  {
+    "model": "llama3.1:8b",
+    "total_time": 104.48564052581787,
+    "first_token_time": 17.571823835372925,
+    "tokens_generated": 415,
+    "throughput": 3.9718376411489347,
+    "response": "**Recursion in Programming**\n==========================\n\nRecursion is a fundamental concept in computer science where a function calls itself repeatedly until it reaches a base case that stops the recursion.\n\n**Example: Factorial Calculation**\n---------------------------------\n\nLet's consider a simple example to illustrate recursion: calculating the factorial of a number. The factorial of a non-negative integer `n` (denoted as `n!`) is the product of all positive integers less than or equal to `n`.\n\n**Recursive Implementation**\n```python\ndef factorial(n):\n    \"\"\"\n    Calculate the factorial of n using recursion.\n\n    :param n: Non-negative integer\n    :return: Factorial of n\n    \"\"\"\n    # Base case: 1! = 1, any other number is not defined\n    if n == 0 or n == 1:\n        return 1\n\n    # Recursive case: n! = n * (n-1)!\n    else:\n        return n * factorial(n - 1)\n```\n**How it Works**\n-----------------\n\nWhen we call `factorial(4)`, here's what happens:\n\n1. The function calls itself with `n=4` and returns `4*factorial(3)`\n2. The function calls itself again with `n=3` and returns `3*factorial(2)`\n3. The function calls itself once more with `n=2` and returns `2*factorial(1)`\n4. Finally, the function reaches the base case with `n=1` and returns `1`\n5. The recursive calls unwind, multiplying each result until we get the final answer: `4! = 24`\n\n**Example Use Case**\n```python\nprint(factorial(4))  # Output: 24\n```\nRecursion is a powerful technique for solving problems that have a recursive structure, such as tree traversals or dynamic programming algorithms. However, it can also lead to stack overflows if not used carefully.\n\nI hope this example helps illustrate the concept of recursion in programming!",
+    "prompt_id": "reasoning",
+    "prompt_category": "reasoning",
+    "timestamp": "2025-10-28T16:43:17.755364"
+  },
+  {
+    "model": "llama3.1:8b",
+    "total_time": 54.75306010246277,
+    "first_token_time": 2.636578321456909,
+    "tokens_generated": 249,
+    "throughput": 4.547691024648321,
+    "response": "**Palindrome Checker Function**\n=====================================\n\nThe following Python function checks if a given string is a palindrome:\n\n```python\ndef is_palindrome(s: str) -> bool:\n    \"\"\"\n    Checks if the input string is a palindrome.\n\n    Args:\n        s (str): The input string to check.\n\n    Returns:\n        bool: True if the string is a palindrome, False otherwise.\n    \"\"\"\n    s = ''.join(c for c in s if c.isalnum()).lower()  # remove non-alphanumeric characters and convert to lowercase\n    return s == s[::-1]  # compare the string with its reverse\n```\n\n**Example Use Cases**\n----------------------\n\n```python\nprint(is_palindrome(\"Madam\"))  # True\nprint(is_palindrome(\"hello\"))  # False\nprint(is_palindrome(\"A man, a plan, a canal: Panama\"))  # True\n```\n\nThis function works by first cleaning the input string to remove non-alphanumeric characters and converting it to lowercase. It then compares the cleaned string with its reverse using slicing (`s[::-1]`). If they are equal, the function returns `True`, indicating that the original string is a palindrome. Otherwise, it returns `False`.",
+    "prompt_id": "code",
+    "prompt_category": "code",
+    "timestamp": "2025-10-28T16:44:12.517195"
+  },
+  {
+    "model": "llama3.1:8b",
+    "total_time": 28.32502555847168,
+    "first_token_time": 2.7703475952148438,
+    "tokens_generated": 127,
+    "throughput": 4.48366762239393,
+    "response": "Here is a summary of the key principles of object-oriented programming:\n\nObject-oriented programming (OOP) is based on four core principles: **encapsulation**, where data and functions are combined into objects to hide implementation details; **abstraction**, where complex systems are represented as simplified, abstract models; and **inheritance** and **polymorphism**, which enable the creation of a hierarchy of related classes that can be extended and specialized. This approach allows for more modular, flexible, and reusable code. By organizing code into objects with attributes (data) and methods (functions), developers can write more efficient, maintainable software systems.",
+    "prompt_id": "summary",
+    "prompt_category": "summarization",
+    "timestamp": "2025-10-28T16:44:40.849285"
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "total_time": 67.57274675369263,
+    "first_token_time": 13.902295589447021,
+    "tokens_generated": 515,
+    "throughput": 7.621415803581448,
+    "response": "Recursion is a fundamental concept in programming where a function calls itself repeatedly until a certain condition is met or an exit value is reached.\n\nHere's a simple example to illustrate this:\n\n**Example: Calculating the Factorial of a Number**\n\nSuppose you want to write a program that calculates the factorial of a given number, e.g., 5.\n\nThe factorial of a number `n`, denoted as `n!`, is the product of all positive integers less than or equal to `n`. For example:\n\n* `5! = 5 \u00d7 4 \u00d7 3 \u00d7 2 \u00d7 1 = 120`\n\nYou can write a recursive function to calculate the factorial as follows:\n```cpp\nint factorial(int n) {\n  // Base case: if n is 0, return 1 (since the product of no numbers is defined)\n  if (n == 0) return 1;\n  \n  // Recursive call: pass the next smaller number to the function itself\n  return n * factorial(n - 1);\n}\n```\nHere's how it works:\n\n* The `factorial` function takes an integer `n` as input.\n* If `n` is 0, the function returns immediately with a value of 1. This is called the **base case**, and it provides a stopping point for the recursion.\n* Otherwise, the function calls itself recursively by passing the next smaller number (`n - 1`) to the same function (`factorial`).\n* The recursive call continues until `n` reaches the base case (0), at which point the recursion stops.\n\nLet's illustrate this with an example calculation:\n\n* `factorial(5)` will be called, and its return value is stored in a variable.\n* Since `n` is not 0, the function calls itself recursively: `factorial(4)`.\n* Again, since `n` is not 0, another recursive call is made: `factorial(3)`.\n* This continues until we reach the base case: `factorial(1)`, which returns its result (which is then multiplied by `1`) and this value is returned to the original function.\n* The process repeats until we finally return the product of all positive integers less than or equal to `5`, i.e., the factorial of 5.\n\n**Tips**\n\n* Understand how recursion works, especially the base case that stops the recursion.\n* Be mindful of recursive functions with large inputs or complex calculations, as they may cause stack overflow errors.",
+    "prompt_id": "reasoning",
+    "prompt_category": "reasoning",
+    "timestamp": "2025-10-28T16:45:48.489457"
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "total_time": 35.421923875808716,
+    "first_token_time": 0.5824356079101562,
+    "tokens_generated": 343,
+    "throughput": 9.683268509146414,
+    "response": "Here's a Python function that checks whether a given string is a palindrome:\n\n```python\ndef is_palindrome(s):\n    return s == s[::-1]\n```\n\nThis function works by comparing the input string with its reverse (which is stored in `s[::-1]`). If they are equal, then it is a palindrome.\n\nHere's how you can use this function to check for palindromes:\n\n```python\nprint(is_palindrome(\"abba\"))  # Output: True\nprint(is_palindrome(\"abcd\"))  # Output: False\n```\n\nThis function has a time complexity of O(n), where n is the length of the string, because it creates a reversed copy of the entire string. It also has a space complexity of O(n) due to this creation.\n\nHowever, you can optimize the code by using two pointers from both ends towards the middle and check if they match or not. Here's an optimized version:\n\n```python\ndef is_palindrome(s):\n    left = 0\n    right = len(s) - 1\n    \n    while left <= right:\n        if s[left] != s[right]:\n            return False\n        \n        left += 1\n        right -= 1\n        \n    return True\n\n```\n\nThis optimized version works by moving two pointers from both ends towards the middle and checking each time if they match or not. If we ever find a mismatch, we immediately know it's not a palindrome because there is no way to change the values of the characters to make them equal (because we're only comparing characters). This code has a time complexity of O(n) as it makes two passes through the string, each one moving towards the middle.",
+    "prompt_id": "code",
+    "prompt_category": "code",
+    "timestamp": "2025-10-28T16:46:23.911894"
+  },
+  {
+    "model": "llama3.1:8b-instruct-q2_K",
+    "total_time": 12.95997405052185,
+    "first_token_time": 0.6061573028564453,
+    "tokens_generated": 125,
+    "throughput": 9.645081040495349,
+    "response": "The key principles of object-oriented programming (OOP) are:\n\n1. **Abstraction**: Breaking down complex systems into smaller, independent units that encapsulate data and behavior.\n2. **Encapsulation**: Hiding internal implementation details from the outside world through abstraction, making it difficult for other code to access or modify its state.\n3. **Inheritance and Polymorphism**: Allowing objects to inherit common attributes and behaviors, while also enabling different classes of objects to respond differently to the same input.\n\nThese principles enable the creation of reusable code modules that can be easily maintained and modified over time without affecting dependent code.",
+    "prompt_id": "summary",
+    "prompt_category": "summarization",
+    "timestamp": "2025-10-28T16:46:36.872010"
+  }
+]

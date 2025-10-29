@@ -1,0 +1,304 @@
+
+============================================================
+Starting LLM Benchmark Suite
+============================================================
+
+Server Status:
+  NanoLLM: ✗ Not available
+  Ollama:  ✓ Running
+  Judge Model: llama3.2:3b
+
+Models to benchmark: 3
+Prompts per model: 7
+Backends: ['NanoLLM', 'Ollama']
+Total benchmark runs: 21
+
+
+============================================================
+Model: meta-llama/Llama-3.2-1B-Instruct
+============================================================
+
+Prompt [reasoning_1] (reasoning):
+  Explain the concept of recursion in programming and provide a simple example. Wh...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt reasoning_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/reasoning_1...
+    Using local Ollama judge...
+    Quality scores: 8.0/10 avg
+  Progress: 1/21
+
+Prompt [code_1] (code):
+  Write a Python function to check if a string is a palindrome. Include error hand...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt code_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/code_1...
+    Using local Ollama judge...
+    Quality scores: 8.8/10 avg
+  Progress: 2/21
+
+Prompt [summarization_1] (summarization):
+  Summarize the key principles of object-oriented programming in 3-4 sentences....
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt summarization_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/summarization_1...
+    Using local Ollama judge...
+    Quality scores: 8.0/10 avg
+  Progress: 3/21
+
+Prompt [reasoning_2] (reasoning):
+  If a train travels 120 km in 2 hours, then stops for 30 minutes, and continues f...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt reasoning_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/reasoning_2...
+    Using local Ollama judge...
+    Quality scores: 7.0/10 avg
+  Progress: 4/21
+
+Prompt [code_2] (code):
+  Create a function that finds the two numbers in an array that sum to a target va...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt code_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/code_2...
+    Using local Ollama judge...
+    Quality scores: 8.8/10 avg
+  Progress: 5/21
+
+Prompt [summarization_2] (summarization):
+  Explain the difference between machine learning and deep learning in simple term...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt summarization_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/summarization_2...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 6/21
+
+Prompt [reasoning_3] (reasoning):
+  What are the ethical considerations when deploying AI models in healthcare? List...
+  [Ollama] Testing meta-llama/Llama-3.2-1B-Instruct with prompt reasoning_3...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-1B-Instruct/reasoning_3...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 7/21
+
+============================================================
+Model: meta-llama/Llama-3.2-3B-Instruct
+============================================================
+
+Prompt [reasoning_1] (reasoning):
+  Explain the concept of recursion in programming and provide a simple example. Wh...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt reasoning_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/reasoning_1...
+    Using local Ollama judge...
+    Quality scores: 8.0/10 avg
+  Progress: 8/21
+
+Prompt [code_1] (code):
+  Write a Python function to check if a string is a palindrome. Include error hand...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt code_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/code_1...
+    Using local Ollama judge...
+    Quality scores: 9.0/10 avg
+  Progress: 9/21
+
+Prompt [summarization_1] (summarization):
+  Summarize the key principles of object-oriented programming in 3-4 sentences....
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt summarization_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/summarization_1...
+    Using local Ollama judge...
+    Quality scores: 8.2/10 avg
+  Progress: 10/21
+
+Prompt [reasoning_2] (reasoning):
+  If a train travels 120 km in 2 hours, then stops for 30 minutes, and continues f...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt reasoning_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/reasoning_2...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 11/21
+
+Prompt [code_2] (code):
+  Create a function that finds the two numbers in an array that sum to a target va...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt code_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/code_2...
+    Using local Ollama judge...
+    Quality scores: 8.2/10 avg
+  Progress: 12/21
+
+Prompt [summarization_2] (summarization):
+  Explain the difference between machine learning and deep learning in simple term...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt summarization_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/summarization_2...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 13/21
+
+Prompt [reasoning_3] (reasoning):
+  What are the ethical considerations when deploying AI models in healthcare? List...
+  [Ollama] Testing meta-llama/Llama-3.2-3B-Instruct with prompt reasoning_3...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.2-3B-Instruct/reasoning_3...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 14/21
+
+============================================================
+Model: meta-llama/Llama-3.1-8B-Instruct
+============================================================
+
+Prompt [reasoning_1] (reasoning):
+  Explain the concept of recursion in programming and provide a simple example. Wh...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt reasoning_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/reasoning_1...
+    Using local Ollama judge...
+    Quality scores: 8.0/10 avg
+  Progress: 15/21
+
+Prompt [code_1] (code):
+  Write a Python function to check if a string is a palindrome. Include error hand...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt code_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/code_1...
+    Using local Ollama judge...
+    Quality scores: 8.8/10 avg
+  Progress: 16/21
+
+Prompt [summarization_1] (summarization):
+  Summarize the key principles of object-oriented programming in 3-4 sentences....
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt summarization_1...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/summarization_1...
+    Using local Ollama judge...
+    Quality scores: 8.2/10 avg
+  Progress: 17/21
+
+Prompt [reasoning_2] (reasoning):
+  If a train travels 120 km in 2 hours, then stops for 30 minutes, and continues f...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt reasoning_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/reasoning_2...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 18/21
+
+Prompt [code_2] (code):
+  Create a function that finds the two numbers in an array that sum to a target va...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt code_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/code_2...
+    Using local Ollama judge...
+    Quality scores: 8.8/10 avg
+  Progress: 19/21
+
+Prompt [summarization_2] (summarization):
+  Explain the difference between machine learning and deep learning in simple term...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt summarization_2...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/summarization_2...
+    Using local Ollama judge...
+    Quality scores: 8.2/10 avg
+  Progress: 20/21
+
+Prompt [reasoning_3] (reasoning):
+  What are the ethical considerations when deploying AI models in healthcare? List...
+  [Ollama] Testing meta-llama/Llama-3.1-8B-Instruct with prompt reasoning_3...
+    ✓ Completed in 0.01s, 0.00 tokens/s
+  Evaluating quality for ollama/meta-llama/Llama-3.1-8B-Instruct/reasoning_3...
+    Using local Ollama judge...
+    Quality scores: 7.6/10 avg
+  Progress: 21/21
+
+============================================================
+Benchmarking complete! 21 runs completed.
+============================================================
+
+Saving results...
+  ✓ Saved benchmark_results.json
+  ✓ Saved quality_scores.json
+
+Analyzing results and creating visualizations...
+  ✓ Saved results_summary.csv
+  ✓ Saved plots/performance_comparison.png
+  ✓ Saved plots/first_token_latency.png
+  ✓ Saved plots/quality_radar.png
+  ✓ Saved plots/average_quality.png
+
+================================================================================
+BENCHMARK SUMMARY
+================================================================================
+
+OLLAMA - Llama-3.1-8B-Instruct
+------------------------------------------------------------
+  Performance Metrics:
+    Latency:          0.01s ± 0.00s
+    First Token:      0.010s ± 0.000s
+    Throughput:       0.00 ± 0.00 tokens/s
+    Tokens Generated: 0 ± 0
+  Resource Usage:
+    GPU Usage:        0.0% ± 0.0%
+    CPU Usage:        1.2% ± 1.8%
+  Quality Scores (1-10):
+    Correctness:      8.9 ± 0.4
+    Relevance:        8.7 ± 0.9
+    Completeness:     7.3 ± 0.5
+    Coherence:        8.4 ± 0.5
+    Reasoning:        7.6 ± 1.1
+    Average:          8.2 ± 0.5
+
+OLLAMA - Llama-3.2-1B-Instruct
+------------------------------------------------------------
+  Performance Metrics:
+    Latency:          0.01s ± 0.00s
+    First Token:      0.010s ± 0.000s
+    Throughput:       0.00 ± 0.00 tokens/s
+    Tokens Generated: 0 ± 0
+  Resource Usage:
+    GPU Usage:        0.0% ± 0.0%
+    CPU Usage:        0.9% ± 0.9%
+  Quality Scores (1-10):
+    Correctness:      8.9 ± 0.4
+    Relevance:        8.4 ± 0.8
+    Completeness:     7.6 ± 1.1
+    Coherence:        8.0 ± 1.0
+    Reasoning:        7.0 ± 1.3
+    Average:          8.0 ± 0.7
+
+OLLAMA - Llama-3.2-3B-Instruct
+------------------------------------------------------------
+  Performance Metrics:
+    Latency:          0.01s ± 0.00s
+    First Token:      0.010s ± 0.000s
+    Throughput:       0.00 ± 0.00 tokens/s
+    Tokens Generated: 0 ± 0
+  Resource Usage:
+    GPU Usage:        0.0% ± 0.0%
+    CPU Usage:        0.2% ± 0.6%
+  Quality Scores (1-10):
+    Correctness:      8.9 ± 0.7
+    Relevance:        8.4 ± 0.5
+    Completeness:     7.1 ± 0.4
+    Coherence:        8.3 ± 0.5
+    Reasoning:        7.4 ± 1.4
+    Average:          8.0 ± 0.5
+
+================================================================================
+Files generated:
+  - benchmark_results.json  (raw performance data)
+  - quality_scores.json     (LLM-as-Judge evaluations)
+  - results_summary.csv     (aggregated statistics)
+  - plots/performance_comparison.png
+  - plots/first_token_latency.png
+  - plots/quality_radar.png
+  - plots/average_quality.png
+================================================================================
+
+
+✅ Benchmarking completed successfully!
+
